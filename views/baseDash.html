@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>dashboard</title>
+		{% block css %}
+			{% include "includes/css.html" %}
+		{% endblock %}
+	</head>
+	<body>
+		{% block modals %}
+		<!-- Crear lista Modal -->
+		<!-- <form action="/addlist" method="post"> -->
+			<div class="modal fade" id="crearLista" tabindex="-1" role="dialog" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title full-width">Crear lista</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+				      	<div class="formBox">
+					        <input type="text" name="nameList" id="nameList" placeholder="Nombre de la lista">
+							<label>Elegir color de lista</label>
+					        <input type="color" name="colorList" id="colorList">
+							<div class="form-group">
+						    	<label>Tareas (Una tarea por línea)</label>
+						    	<textarea class="form-control" name="cardText", rows="5" id="cardTextList"></textarea>
+					    	</div>
+					    	<div class="form-group">
+					    		<label>Fecha de fin</label>
+					    		<input type="date" name="date" class="form-control" id="dateList">
+					    	</div>
+					    </div>
+			      </div>
+			      <div class="modal-footer">
+			        <div class="formBox">
+			        	<input type="submit" id="addListBtn" value="Añadir">
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		<!-- </form> -->
+		<!-- End Crear Lista Modal -->
+
+		<!-- Crear Tareas Modal -->
+		<!-- <div class="modal fade" id="crearLista" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title full-width">Crear lista</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="formBox">
+			        <input type="text" placeholder="Nombre de la lista">
+					<label>Elegir color de lista</label>
+			        <input type="color">
+			    </div>
+		      </div>
+		      <div class="modal-footer">
+		        <div class="formBox">
+		        	<input type="submit" value="Añadir">
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div> -->
+		<!-- End Crear Tareas Modal -->
+
+
+		<!-- Crear Proyectos Modal -->
+
+		
+			<div class="modal fade" id="crearProyecto" tabindex="-1" role="dialog" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title full-width">Crear proyecto</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			      	<div class="formBox">
+				        <input type="text" name="nameProject" placeholder="Nombre del proyecto" id="projectNameModal">
+						<label>Elegir color del proyecto</label>
+				        <input type="color" name="colorProject"  id="projectColorModal">
+				    	<div class="form-group">
+				    	 <label>Tareas (Una tarea por línea)</label>
+				    	 <textarea class="form-control" name="cardText", rows="5"  id="projectTasksModal"></textarea>
+				    	</div>
+				    	<div class="form-group">
+				    		<label>Fecha de entrega</label>
+				    		<input type="date" name="date"  id="projectDateModal" class="form-control">
+				    	</div>
+				    </div>
+			      </div>
+			      <div class="modal-footer">
+			        <div class="formBox">
+			        	<input type="button" id="addProjectButton" value="Añadir">
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+	
+		<!-- End Crear Proyectos Modal -->
+
+		
+		<!-- Añadir tareas Modal -->
+		
+		<!-- Modal -->
+
+		<div class="modal fade" id="añadirTarea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title full-width">Añadir tarea a proyecto</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+			      	<div class="formBox">
+				        <input type="text" class="inputTask" name="addTask" placeholder= "Añadir tarea">
+				    </div>
+		      </div>
+		      <div class="modal-footer">
+		        <div class="formBox">
+		        	<input type="button" id="addTaskBtn" value="Añadir">
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- End Añadir tareas Modal-->
+
+		
+		<!-- Añadir tareas Listas Modal -->
+		
+		<!-- Modal -->
+
+		<div class="modal fade" id="añadirTareaLista" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title full-width">Añadir tarea a lista</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+			      	<div class="formBox">
+				        <input type="text" class="inputTask" id="inputTaskList" name="addTask" placeholder= "Añadir tarea">
+				    </div>
+		      </div>
+		      <div class="modal-footer">
+		        <div class="formBox">
+		        	<input type="button" id="addTaskListBtn" value="Añadir">
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- End Añadir tareas Modal-->
+
+
+		<!-- Listas por defecto Modal -->
+		<!-- <form action="/listdefault" method="post">
+			<div class="modal fade" id="listaModal" tabindex="-1" role="dialog" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title full-width">Listas</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			       <p class="modal-subtitulo full-width">En este momento no tiene ningún proyecto ni lista creado, ¿quiere crearlos ahora?</p>
+			      </div>
+			      <div class="modal-footer">
+			        <div class="formBox text-center">
+			        	<button class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#crearProyecto" type="button">Crear proyecto</button>
+				        <button class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#crearLista" type="button">Crear lista</button>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</form> -->
+		<!-- End Listas por defecto Modal -->
+{% endblock %}
+		
+	<!--Header -->
+	<header>
+		<nav class="navbar navbar-toggleable-md navbar-light fixed-top">
+			<button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<img class="logo-small" src="/images/logo-small.png" alt="Logo de la página web">
+			
+			<div class="row full-width">
+				<div class="col-md-11 full-width text-right">
+					<a href="/logout"><button name="cerrarSesion" type="button" class="btn btn-outline-secondary">Cerrar sesión</button></a>
+				</div>
+			</div>
+			<!-- <div class="collapse navbar-collapse">
+				<form class="form-inline mt-2 mt-md-0">
+					<input class="form-control mr-sm-2" type="text" placeholder="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			</div> -->
+		</nav>
+	</header>
+
+	<div class="container-fluid">
+			<div class="row">
+				{% block side %}
+				{% endblock %}
+
+				{% block main %}
+				{% endblock %}
+			</div>
+	</div>
+
+
+	{% block js %}
+		{% include "includes/js.html" %}
+	{% endblock %}
+
+	</body>
+</html>

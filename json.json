@@ -1,0 +1,36 @@
+[
+	{
+		"name": "Elisabet",
+		"password": "1234",
+		"email": "elisabetfr@msn.com",
+		"avatar": "https://pbs.twimg.com/profile_images/2010283398/YO_400x400.jpg",
+		"projects":[
+		    {
+		    	"name":"Diseño web",
+		    	"startDate":"12/09/2017",
+		    	"finishDate":"22/09/2017",
+		    	"tasks": [
+		    		{
+		    			"description":"Empezar javascript",
+		    			"state": true
+		    		}
+		    	]
+		    } 
+		],
+
+		"lists":[
+			{
+
+				"name":"Hacer la compra",
+				"color": "",
+				"tasks": [
+		    		{
+		    			"finishDate":"13/09/2017",
+		    			"description":"Empezar javascript",
+		    			"state": true
+		    		}
+		    	]
+			}
+		]
+	}	
+]

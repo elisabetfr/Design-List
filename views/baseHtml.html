@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Proyecto</title>
+
+		{% block css %}
+			{% include "includes/css.html" %}
+		{% endblock %}
+	</head>
+
+	<body>
+
+		{% block modals %}{% endblock %}
+		
+	
+	<div class="container-fluid full-width">
+		<header>
+			{% block nav %}{% endblock %}
+		</header>
+
+		{% block main %}{% endblock %}
+
+		{% block footer %}
+			{% include "includes/footer.html" %}
+		{% endblock %}
+	</div>
+
+	{% block js %}
+		{% include "includes/js.html" %}
+	{% endblock %}
+
+	</body>
+</html>

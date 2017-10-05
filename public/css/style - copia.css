@@ -1,0 +1,341 @@
+body {
+	padding-top: 76px;
+}
+
+.full-width{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.logo{
+	width: 64px;
+	height: 64px;
+}
+
+.title {
+	margin-left: 15px;
+	text-decoration: none;
+	color: black;
+}
+
+.title:hover {
+	color:black;
+}
+
+form > button{
+	margin-right: 15px;
+
+}
+
+.imagen-fondo{
+	background: url("../images/rsz_imagen-fondo.jpg");
+	height: 400px;
+}
+
+/*.info-tarjeta{
+	width: 200px;
+	margin: 15px;
+	border: 1px solid gray; 
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.info-imagen img{
+	width: 64px;
+	height: 64px;
+}
+*/
+.infoImg{
+	height: 100px;
+	width: 100px;
+
+}
+
+.infoContainer{
+	padding: 50px;
+}
+
+.infoContainer .row {
+	margin-top: 30px;
+}
+
+footer{
+	height: 80px;
+	background-color: #E7F9FE;
+
+}
+
+
+
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 85px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  border-right: 1px solid #eee;
+}
+
+
+.sidebar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar .nav {
+  margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+}
+
+.sidebar .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+.sidebar .nav-link {
+  border-radius: 0;
+}
+
+.avatar {
+	width: 128px;
+	height: 128px;
+}
+
+.user-perfil a{
+	color: black;
+}
+
+
+/*23/08/2017*/
+
+.navPerfil{
+
+}
+
+.btn-crearLista{
+	width: 100%;
+}
+
+/*Mis tareas para hoy*/
+h3{
+	font-size: 22px;
+	margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+
+.filtrar {
+
+}
+
+
+
+/*Tarjetas.html*/
+
+.tarjetas{
+	width: 100px;
+	height: 100px;
+	color: white;
+
+}
+/*23/08/2017*/
+
+
+/*24/08/2017*/
+/*misProyectos*/
+.proyecto{
+	width: 280px;
+	height:250px;
+	margin-left: 310px;
+}
+
+.header-tarjeta{
+	width: 280px;
+	height:25px;
+	background-color: blue;
+}
+
+.ul-tarjeta{
+	margin-top: 15px;
+}
+
+.footer-tarjeta{
+	width: 280px;
+    height: 42px;
+    bottom: -55px;
+}
+
+
+/*login*/
+/*https://bootsnipp.com/snippets/featured/google-style-login-extended-with-html5-localstorage*/
+
+/*General estilos*/
+.card.card-container{
+	max-width: 350px;
+	padding: 40px 40px;
+}
+
+.btn{
+	font-weight: 700;
+	height: 36px;
+	-moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+/*Componentes card*/
+.profile-name-card{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+
+
+/*New style login (Segundo Login)*/
+
+/*Esta fallando porque necesita tether.io*/
+
+body{
+	margin: 0;
+	padding: 0;
+	/*background: url("../images/escritorio.jpg");*/
+	background-size: cover;
+}
+
+.containerr{
+	width: 50%;
+	height: 400px;
+	background: #fff;
+	margin: 0 auto;
+	margin-top: 120px;
+	border: 2px solid #fff;
+	box-shadow: 0 15px 40px rgba(0,0,0,.5);
+}
+
+.container .left{
+	float: left;
+	width: 50%;
+	height: 396px;
+	background: url("../images/escritorio.jpg");
+	background-size:cover;
+	box-sizing: border-box;
+}
+
+.container .right{
+	float: right;
+	width: 50%;
+	height: 400px;
+	box-sizing: border-box;
+}
+
+.formBox{
+	width: 100%;
+	padding: 80px 40px;
+	box-sizing: border-box;
+	height: 398px;
+	background: #fff;
+}
+
+.formBox p{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	color: #a6af13;
+}
+
+.formBox input{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.formBox input[type="text"],
+.formBox input[type="Contraseña"]{
+	border: none;
+	border-bottom: 2px solid #a6af13;
+	outline: none;
+	height: 40px;
+}
+
+.formBox input[type="text"]:focus,
+.formBox input[type="Contraseña"]:focus{
+	border-bottom: 2px solid #262626;
+}
+
+.formBox input[type="enviar"]{
+	text-align: center;
+	border: none;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	background: #262626;
+	cursor: pointer;
+}
+
+.formBox input[type="enviar"]:hover{
+	background: #a6af13;
+}
+
+.formBox a{
+	color: #262626;
+	font-size: 12px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+
+/*24/08/2017*/
+
+
+/*25/08/2017*/
+
+/*Formulario de resgitro*/
+
+/*25/08/2017*/
+
+
+/*26/08/2017*/
+
+
+
+
+
+
+.red{
+    background-color: red;
+}
+
+.orange{
+    background-color: orange;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.green{
+    background-color: green;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.black{
+    background-color: black;
+}
+
+.gray{
+    background-color: gray;
+}

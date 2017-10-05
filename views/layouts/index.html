@@ -1,0 +1,186 @@
+{% extends "baseHtml.html" %}
+
+{% block modals %}
+<!-- Login Modal -->
+<form action="/login" method="post">
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title full-width">Iniciar sesión</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <div class="formBox">
+		        	<input type="email" id="email" name="email" placeholder="Enter email">
+		        	<input type="password" id="password" name="password" placeholder="Enter password">
+		        </div>
+		      </div>
+		      <div class="modal-footer">
+		        <div class="formBox">
+		        	<input type="submit" id="submit" value="Iniciar sesión">
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+</form>
+<!-- End Login Modal -->
+
+<!-- Formulario de registro Modal -->
+<form action="/signup" method="post">
+	<div class="modal fade" id="formularioModal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title full-width">Registro</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <div class="formBox">
+				      
+				        <input type="text" class="form-control" id="inputName" placeholder="Usuario">
+				     
+				        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Correo electrónico">
+				      
+				        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Contraseña">
+				     
+				        <!-- <p class="cuenta">¿Ya tienes cuenta?<a class="iniciarsSesion" href="/">Iniciar sesión</a></p>  -->
+				    
+				    </div>
+				    <br>
+				  
+			        <div class="form-check">
+			          <label class="form-check-label">
+			            <!-- <input class="form-check-input" type="checkbox"> Al crear su cuenta, acepta nuestros Términos de uso y la Política de Privacidad.
+			          </label> -->
+			        </div>	
+		        </div>
+		      <div class="modal-footer">
+		        <div class="formBox">
+		        	<input type="submit" value="Crear cuenta gratuita">
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+</form>
+<!-- End Formulario de registro Modal -->
+{% endblock %}
+
+
+<!-- Nav -->
+{% block nav %}
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
+		<button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="row full-width">
+			<div class="col-md-6 full-width">
+				<a class="navbar-brand"><img class="logo-small" src="images/logo-small.png" alt= "logo"></a>
+			</div>
+		
+		
+			<div class="col-md-6 full-width align-self-center">
+
+			<div class="collapse navbar-collapse full-width">
+			<!--<ul class="navbar-nav mr-auto">
+			      <li class="nav-item active">
+			        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Link</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link disabled" href="#">Disabled</a>
+			      </li>
+			    </ul> -->
+			    <form class="full-width text-right">
+
+			      <button class="btn my-2 my-sm-0 btn-nav" type="button" data-toggle="modal" data-target="#loginModal">Iniciar sesión</button>
+			      <button class="btn my-2 my-sm-0 btn-nav" type="button" data-toggle="modal" data-target="#formularioModal">Registrarse</button>
+			    </form>
+			</div>
+		</div>
+	</div>
+</nav>
+{% endblock %}
+<!-- End Nav -->
+
+
+{% block main %}
+	<!-- Imagen fondo-->			
+<div class="row imagen-fondo full-width"></div>
+	<!-- End Imagen fondo -->
+
+<div class="container-fluid full-width infoContainer">
+
+	<div class="row full-width info-container1">
+		<div class="col-md-4 text-right">
+			<img class="infoImg img-fluid" src="images/infoContainer1.jpg" alt= "Imagen principal">	
+		</div>
+
+		<div class="col-md-5">
+			<h3 class="infoDescription1">Planéalo todo</h3>
+			<div class="infoDescription1">
+				<p>Organiza tus proyectos, listas de tareas pendientes, ya sean de compra, de películas, del hogar, viajes, o de trabajo. Independientemente de lo que planees o de lo grande o pequeña que sea la tarea, facilita mucho tu vida diaria.</p>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row full-width info-container2">
+		<div class="col-md-8">
+			<h3>Recibe avisos de las tareas pendientes para tu día</h3>
+			<div class="infoDescription2">
+				<p>Establece fechas de creación y de vencimiento. No importa si las listas están relacionadas con el trabajo o con el hogar.</p>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<img class="infoImg1 img-fluid" src="images/infoContainer2.gif" alt= "Imagen principal">
+		</div>
+	</div>
+
+	<div class="row full-width info-container3">
+		<div class="col-md-4 text-right">
+			<img class="infoImg img-fluid" src="images/infoContainer3.jpg" alt= "Imagen principal">
+		</div>
+		<div class="col-md-5">
+			<h3>Accede a tareas en cualquier lado</h3>
+			<div class="infoDescription3">
+				<p>Tus tareas están siempre ahí, puedes consultarlas, agregar nuevas tareas o proyectos, eliminarlas si ya han sido completadas, filtrarlas por nombre o fecha.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="info-tarjeta">
+		<div class="row info-imagen full-width text-center">
+			<img src="images/logo.png" alt="">
+		</div>
+		<div class="row full-width">
+			<h5>TITLE</h5>
+		</div>
+		<div class="row full-width">
+			<p>DESCRIPTION</p>
+		</div>
+	</div>
+
+	<div class="info-tarjeta">
+		<div class="row info-imagen full-width text-center">
+			<img src="images/logo.png" alt="">
+		</div>
+		<div class="row full-width">
+			<h5>TITLE</h5>
+		</div>
+		<div class="row full-width">
+			<p>DESCRIPTION</p>
+		</div>
+	</div> -->
+
+</div>
+{% endblock %}

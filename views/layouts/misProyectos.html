@@ -1,0 +1,399 @@
+{% extends "baseDash.html" %}
+
+<!-- Nav -->
+{% block header %}
+<nav class="navbar navbar-toggleable-md navbar-light fixed-top">
+	<button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<img class="logo-small" src="images/logo-small.png" alt="Logo de la página web">
+	
+	<div class="row full-width">
+		<div class="col-md-11 full-width text-right">
+			<a href="/logout"><button name="cerrarSesion" type="button" class="btn btn-outline-secondary btnNavDashboard">Cerrar sesión</button></a>
+		</div>
+	</div>
+	<!-- <div class="collapse navbar-collapse">
+		<form class="form-inline mt-2 mt-md-0">
+			<input class="form-control mr-sm-2" type="text" placeholder="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+	</div> -->
+</nav>
+<!-- End Nav -->
+{% endblock %}
+
+
+{% block side %}
+<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+	<div class="row full-width">
+		<img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAn2AAAAJDY2YzI0ZjAyLWI2MzctNGFlZC1hZTM5LWU1YzQxNWM5ODlhMA.jpg" alt="Imagen avatar" class="avatar mx-auto">
+	</div>
+	<div class="row">
+		<div class="user-perfil mx-auto">
+			<div class="btn-group">
+				<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.email}}</a>
+                <ul class="dropdown-menu user-dropmenu" role="button">
+                    <li class="dropdown-item" data-toggle="modal" data-target="#crearProyecto"><a href="#">Añadir proyecto</a></li>
+                    <li class="dropdown-item" data-toggle="modal" data-target="#crearLista"><a href="#">Añadir lista</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li class="dropdown-item"><a href="misProyectos">Mis proyectos</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li class="dropdown-item"><a href="misListas">Mis listas</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li class="dropdown-item"><a href='/logout'>Cerrar sesión</a></li>
+                </ul>
+            </div>
+		</div>
+	</div>
+	
+	<br>
+	<ul class="nav flex-column navPerfil">
+		<li class="nav-item">
+			<a class="nav-link" href="/dashboard"><i class="fa fa-home"></i> Home</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link active" href="/misproyectos"><i class="fa fa-inbox"></i> Mis proyectos</a>
+		</li>
+		<!-- <li class="nav-item">
+			<a class="nav-link" href="/mislistas/viajes"><i class=" fa fa-list-ul"></i> Viajes</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/mislistas/peliculas"><i class=" fa fa-list-ul"></i> Películas</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/mislistas/familia"><i class=" fa fa-list-ul"></i> Familia</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/mislistas/hogar"><i class=" fa fa-list-ul"></i> Hogar</a>
+		</li> -->
+		{% for list in user.lists %}
+			<li class="nav-item">
+				<a class="nav-link" href="/mislistas/{{ list.slug }}"><i class=" fa fa-list-ul"></i> {{ list.name }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+
+	<div class="row fixed-bottom">
+		<a class="btn btn-crearLista" href="#" role="button" data-toggle="modal" data-target="#crearLista">+ Crear lista</a>
+	</div>
+</nav>
+{% endblock %}
+
+
+{% block main %}
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+	<div class="content">
+		<div class="row full-width">
+			<div class="col-md-6">
+				<div class="row full-width">
+					<i class="fa fa-inbox fa-2x"></i> <h3 class="title-main">Mis proyectos</h3>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<!-- <p class= "filtrar">Filtrar por:</p>
+				<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						</button>
+
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					    <a class="dropdown-item" href="#">Nombre de proyecto</a>
+					    <a class="dropdown-item" href="#">Fecha de entrega</a>
+					    <a class="dropdown-item" href="#">Action</a>
+						</div>
+				</div> -->
+				<div class="pull-right">
+					<div class="row full-width">
+						<div class="col-lg-5 full-width">
+						    <div class="input-group">
+						      <input id="projectsInputSelect" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar por">
+						    </div>
+  						</div>
+					<form action="">
+						<select class="form-control" id="projectsSelect">
+							<option disabled selected hidden></option>
+							<option value="sel1">Nombre de proyecto</option>
+							<option value="sel2">Fecha de entrega</option>
+							<option value="sel3">Fecha de creación</option>
+						</select>
+					</form>
+				</div>
+				</div>
+				</div>
+		</div>
+		<hr class="line-tasks pull-left">
+
+		<!-- <div class="project-card" id="hiddenProjectCard" hidden>
+			<div class="row project-card-color full-width"></div>
+
+			<div class="row project-card-header full-width">
+				<div class="col-md-9 full-width">
+					<div class="project-card-title">
+						<i class="fa fa-inbox"></i> <span class="titleProject" data-toggle="tooltip" title="{{ project.name }}">{{ project.name }}</span>
+					</div>
+				</div>
+				<div class="col-md-2 full-width">
+					<button class="fa fa-plus-circle" data-toggle="modal" data-target="#exampleModal"></button>
+					<i class="fa fa-trash-o trash"></i>
+				</div>
+			</div>
+
+			<div class="row project-card-body full-width">
+				<ul class="task-list">
+					
+				</ul>
+			</div>
+
+			<div class="row project-card-footer full-width">
+				<div class="col-md-5 project-start-date">
+					<i class="fa fa-calendar"></i> <span></span>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-5 project-expire-date">
+					<span></span> <i class="fa fa-flag-checkered"></i>
+				</div>
+			</div>
+
+		</div> -->
+
+		<!-- Plantilla de proyecto -->
+			<div class="project-card" id="hiddenProjectCard" hidden>
+				<div class="row project-card-color full-width" style="background-color: {{ project.color }}"></div>
+
+				<div class="row project-card-header full-width">
+					<div class="col-md-9 full-width">
+						<div class="project-card-title">
+							<i class="fa fa-inbox"></i> <span class="titleProject" data-toggle="tooltip" title="{{ project.name }}">{{ project.name }}</span>
+						</div>
+					</div>
+					<div class="col-md-3 full-width">
+						<i class="fa fa-plus-circle plus" data-toggle="modal" data-target="#añadirTarea"></i>
+						<i class="fa fa-trash-o trash"></i>
+					</div>
+				</div>
+
+				<div class="row project-card-body full-width">
+					<ul class="task-list">
+						
+					</ul>
+				</div>
+
+				<div class="row project-card-footer full-width">
+					<div class="col-md-5 project-start-date">
+						<i class="fa fa-calendar"></i> <span></span>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-md-5 project-expire-date">
+						<span></span> <i class="fa fa-flag-checkered"></i>
+					</div>
+				</div>
+
+			</div>
+
+		<div class="row full-width" id="projectsRow">
+			{% for project in projects %}
+				<!-- <div class="project-card">
+					<div class="row project-card-color full-width" style="background-color: {{ project.color }}"></div>
+
+					<div class="row project-card-header full-width">
+						<div class="row project-card-title full-width">
+							<div class="col-1 full-width">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<div class="col-8 full-width">
+								<span class="titleProject" data-toggle="tooltip" title="{{ project.name }}">{{ project.name }}</span>
+							</div>
+							 <div class="col-3 full-width">
+							 	<div class="row full-width">
+							 		<i class="fa fa-plus-circle" data-toggle="modal" data-target="#añadirTarea"></i>
+							 	<i class="fa fa-trash-o trash"></i>
+							 	</div>
+							 </div>
+						</div>
+					</div>
+
+					<div class="row project-card-body full-width">
+						<ul class="task-list">
+							{% for task in project.tasks %}
+								<li class="task-element"><i class="fa fa-check-circle-o"></i> {{ task.description }}</li>
+							{% endfor %}	
+						</ul>
+					</div>
+
+					<div class="row project-card-footer full-width">
+						<div class="col-md-5 project-start-date">
+							<i class="fa fa-calendar"></i> <span>{{ project.date }}</span>
+						</div>
+						<div class="col-md-2">
+							<div class="row">
+								<div class="project-card-users full-width text-center">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-5 project-expire-date">
+							<span>{{ project.finishDate }}</span> <i class="fa fa-flag-checkered"></i>
+						</div>
+					</div>
+				</div> -->
+				<!-- Plantilla de proyecto -->
+			<div class="project-card">
+				<div class="row project-card-color full-width" style="background-color: {{ project.color }}"></div>
+
+				<div class="row project-card-header full-width">
+					<div class="col-md-9 full-width">
+						<div class="project-card-title">
+							<i class="fa fa-inbox"></i> <span class="titleProject" data-toggle="tooltip" title="{{ project.name }}">{{ project.name }}</span>
+						</div>
+					</div>
+					<div class="col-md-3 full-width">
+						<i class="fa fa-plus-circle plus" data-toggle="modal" data-target="#añadirTarea"></i>
+						<i class="fa fa-trash-o trash"></i>
+					</div>
+				</div>
+
+				<div class="row project-card-body full-width">
+					<ul class="task-list">
+						{% for task in project.tasks %}
+							{% if task.state %}
+								<li class="task-element" style="text-decoration: line-through;"><i class="fa fa-check-circle-o" style="color:lime"></i> {{ task.description }}</li>
+							{% else %}
+								<li class="task-element"><i class="fa fa-check-circle-o"></i> {{ task.description }}</li>
+							{% endif %}
+						{% endfor %}	
+					</ul>
+				</div>
+
+				<div class="row project-card-footer full-width">
+					<div class="col-md-5 project-start-date">
+						<i class="fa fa-calendar"></i> <span>{{ project.date }}</span>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-md-5 project-expire-date">
+						<span>{{ project.finishDate }}</span> <i class="fa fa-flag-checkered"></i>
+					</div>
+				</div>
+
+			</div>
+			{% endfor %}
+			<!-- <div class="project-card">
+				<div class="row project-card-color full-width"></div>
+
+				<div class="row project-card-header full-width">
+					<div class="project-card-title">
+						<i class="fa fa-inbox"></i> <span>Mi proyecto de diseño web</span>
+						<i class="fa fa-trash-o"></i>
+					</div>
+				</div>
+
+				<div class="row project-card-body full-width">
+					<ul class="task-list">
+						<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+					  	<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+					  	<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+					  	<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+
+					</ul>
+				</div>
+
+				<div class="row project-card-footer full-width">
+					<div class="col-md-5 project-start-date">
+						<i class="fa fa-calendar"></i> <span>29/08/2017</span>
+					</div>
+					<div class="col-md-2">
+						<div class="row">
+							<div class="project-card-users full-width text-center">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5 project-expire-date">
+						<span>29/08/2017</span> <i class="fa fa-flag-checkered"></i>
+					</div>
+				</div>
+			</div>
+
+			<div class="project-card">
+				<div class="row project-card-color full-width"></div>
+
+				<div class="row project-card-header full-width">
+					<div class="project-card-title">
+						<i class="fa fa-inbox"></i> <span>Mi proyecto de diseño web</span>
+					</div>
+				</div>
+
+				<div class="row project-card-body full-width">
+					<ul class="task-list">
+						<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+					  	<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+					  	<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+					  	<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+
+					</ul>
+				</div>
+
+				<div class="row project-card-footer full-width">
+					<div class="col-md-5 project-start-date">
+						<i class="fa fa-calendar"></i> <span>29/08/2017</span>
+					</div>
+					<div class="col-md-2">
+						<div class="row">
+							<div class="project-card-users full-width text-center">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5 project-expire-date">
+						<span>29/08/2017</span> <i class="fa fa-flag-checkered"></i>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="project-card">
+				<div class="row project-card-color full-width"></div>
+
+				<div class="row project-card-header full-width">
+					<div class="project-card-title">
+						<i class="fa fa-inbox"></i> <span>Mi proyecto de diseño web</span>
+					</div>
+				</div>
+
+				<div class="row project-card-body full-width">
+					<ul class="task-list">
+						<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+					  	<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+					  	<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+					  	<li class="task-element"><i class="fa fa-check-circle-o"></i> Hacer esto</li>
+
+					</ul>
+				</div>
+
+				<div class="row project-card-footer full-width">
+					<div class="col-md-5 project-start-date">
+						<i class="fa fa-calendar"></i> <span>29/08/2017</span>
+					</div>
+					<div class="col-md-2">
+						<div class="row">
+							<div class="project-card-users full-width text-center">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5 project-expire-date">
+						<span>29/08/2017</span> <i class="fa fa-flag-checkered"></i>
+					</div>
+				</div>
+
+			</div>
+ -->
+		</div>
+	</div>
+</main>
+{% endblock %}
+
+
+{% block js %}
+	{% include "includes/js.html" %}
+{% endblock %}
+
+	</body>
+</html>
